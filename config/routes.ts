@@ -53,6 +53,30 @@
     redirect: '/welcome',
   },
   {
+    path: '/blog',
+    name: 'blog',
+    icon: 'read',
+    routes: [
+      {
+        path: '/blog',
+        redirect: '/blog/list',
+      },
+      {
+        path: '/blog/list',
+        name: 'list',
+        component: './BlogList',
+      },
+      {
+        path: '/blog/tag',
+        name: 'tag',
+        component: './Tag',
+      },
+      {
+        component: './404',
+      },
+    ],
+  },
+  {
     component: './404',
   },
 ];
