@@ -11,10 +11,10 @@ const genList = (current: number, pageSize: number) => {
       title: `blog-${(i + 1) * current}`,
       state: 'pubilshed',
       order: i,
-      tags: {
+      tags: [{
         id: 0,
         name: 'vue'
-      },
+      }],
       admireCount: 1,
       visitCount: 1,
       publishDate: Date.now(),
@@ -32,7 +32,7 @@ function getList(req: Request, res: Response, u: string) {
   }
   const { current = 1, pageSize = 10 } = req.query;
   const params = parse(realUrl, true).query as unknown as API.PageParams;
-  let blogList = genList(current, pageSize)
+  let blogList = genList(1, 100)
 
   let dataSource = [...blogList].slice(
     ((current as number) - 1) * (pageSize as number),

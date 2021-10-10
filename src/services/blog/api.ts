@@ -13,9 +13,7 @@ export async function getBlogList(
   },
   options?: { [key: string]: any },
 ) {
-  return request<{
-    data: API.BlogList
-  }>('/api/blogList', {
+  return request<API.BlogList>('/api/blogList', {
     method: 'GET',
     params: {
       ...params,

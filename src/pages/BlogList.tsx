@@ -23,7 +23,7 @@ const BlogList: React.FC = () => {
     </Popconfirm>
   );
 
-  const columns: ProColumns<Blog>[] = [
+  const columns: ProColumns<API.BlogListItem>[] = [
     {
       dataIndex: 'id',
       title: '序号',
