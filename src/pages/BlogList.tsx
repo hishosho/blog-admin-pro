@@ -4,6 +4,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import React from 'react';
 import type { ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
+import { getBlogList } from '@/services/blog/api';
 
 
 export type Blog = {
@@ -14,19 +15,6 @@ export type Blog = {
   publishDate: number;
   updateDate: number;
 };
-
-const tableListDataSource: Blog[] = [];
-
-for (let i = 0; i < 5; i += 1) {
-  tableListDataSource.push({
-    id: `${102047 + i}`,
-    title: `blog${i}`,
-    state: i % 2 === 0 ? 'published' : 'wait',
-    order: i,
-    publishDate: Date.now(),
-    updateDate: Date.now()
-  });
-}
 
 const BlogList: React.FC = () => {
   const renderRemoveBlog = (text: string) => (
@@ -75,22 +63,19 @@ const BlogList: React.FC = () => {
 
   return (
     <PageContainer>
-      <ProTable<Blog>
+      <ProTable<API.BlogListItem, API.PageParams>
         columns={columns}
-        request={(params, sorter, filter) => {
-          // 表单搜索项会从 params 传入，传递给后端接口。
-          console.log(params, sorter, filter);
-          return Promise.resolve({
-            data: tableListDataSource,
-            success: true,
-          });
-        }}
+        request={getBlogList}
         rowKey="id"
         pagination={{
           showQuickJumper: true,
         }}
         toolBarRender={() => [
-          <Button key="button" icon={<PlusOutlined />} type="primary">
+          <Button
+            key="button"
+            icon={<PlusOutlined />} 
+            type="primary"
+          >
             新建
           </Button>,
         ]}

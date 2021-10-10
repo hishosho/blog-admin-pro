@@ -72,6 +72,11 @@
         component: './Tag',
       },
       {
+        path: '/blog/edit',
+        name: 'edit',
+        component: './BlogEdit',
+      },
+      {
         component: './404',
       },
     ],

@@ -51,5 +51,6 @@ export default {
   'menu.editor.koni': '拓扑编辑器',
   'menu.blog': '博客管理',
   'menu.blog.list': '博客列表',
-  'menu.blog.tag': '博客标签管理'
+  'menu.blog.tag': '博客标签管理',
+  'menu.blog.edit': '编辑博客'
 };
